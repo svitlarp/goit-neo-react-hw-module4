@@ -20,18 +20,20 @@ const SearchBar = ({ onQuery }) => {
 
     return (
         <header>
-            <form onSubmit={handleSubmit}>
-                <input
-                    className={css.input}
-                    type="text"
-                    autoComplete="off"
-                    autoFocus
-                    placeholder="Search images and photos"
-                    name="search"
-                />
-                <button type="submit">Search</button>
-                <Toaster />
-            </form>
+            {/* <div className={css.searchBar} > */}
+                <form className={css.searchBar}  onSubmit={handleSubmit}>
+                    <input
+                        className={css.searchBarInput}
+                        type="text"
+                        autoComplete="off"
+                        autoFocus
+                        placeholder="Search images and photos"
+                        name="search"
+                    />
+                    {/* <button type="submit">Search</button> */}
+                    <Toaster />
+                    </form>
+                {/* </div> */}
         </header>
     )
 }

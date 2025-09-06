@@ -1,3 +1,19 @@
-.input {
-    
+.searchBar {
+    background-color: rgb(87, 87, 201);
+    min-width: 800px;
+    text-align: center;
 }
+
+
+.searchBarInput {
+    margin: 20px 200px;
+    background-color: rgb(255, 255, 255);
+    width: 200px;
+    padding: 10px;
+}
+
+.searchBarInput::placeholder {
+    color: black;
+    font-size: medium;
+}
+

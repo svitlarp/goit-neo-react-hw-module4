@@ -1,4 +1,12 @@
 .imageGallery {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.imageGalleryList {
+    width: calc((100% - 3 * 24px) / 4);
+    aspect-ratio: calc(360/300);
 }
