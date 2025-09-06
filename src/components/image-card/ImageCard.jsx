@@ -4,11 +4,10 @@ import css from './ImageCard.module.css';
 const ImageCard = ({image}) => {
     return (
         <div className={css.image}>
-            <p>{image}</p>
-            <img src="" alt="" />
+            <img src={image.urls.small} alt={image.alt_description} title={image.alt_description} />
         </div>
-    )
+    ) 
 }
 
-
 export default ImageCard;
+
