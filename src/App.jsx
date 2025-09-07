@@ -6,6 +6,7 @@ import ImageGallery from './components/image-gallery/ImageGallery';
 import ErrorMessage from './components/error-message/ErrorMessage';
 import LoadMoreBtn from './components/load-more-btn/LoadMoreBtn';
 import Loader from './components/loader/Loader';
+import ImageModal from './components/image-modal/ImageModal';
 
 
 const clientId = import.meta.env.VITE_UNSPLASH_CLIENT_ID;
@@ -17,13 +18,20 @@ function App() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [selectedImage, setSelectedImage] = useState(null);  // modal state
 
+  // Handle Query to initialise a new ImageList, page and query
   const handleSearch = (newQuery) => {
     setQuery(newQuery);
     setPage(1);
     setImages([]);
   }
 
+  // Modal Window handlers
+  const handleOpenModal = (image) => setSelectedImage(image);
+  const handleCloseModal = () => setSelectedImage(null);
+
+  // Fetch API
   useEffect(() => {
     if (!query) return;
     
@@ -49,8 +57,11 @@ function App() {
       <SearchBar onQuery={handleSearch} />
       {images.length === 0 && <ErrorMessage errorMessage={errorMessage} />}
       {loading && <Loader />}
-      <ImageGallery images={images} />
+      <ImageGallery images={images} onSelect={handleOpenModal}/>
       {!loading && images.length > 0 && <LoadMoreBtn onSetPage={setPage} />}
+
+      {/* Modal */}
+      <ImageModal isOpen={!!selectedImage} onClose={handleCloseModal} image={selectedImage} />
     </>
   );
 }
